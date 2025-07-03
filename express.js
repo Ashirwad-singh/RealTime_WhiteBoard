@@ -3,16 +3,17 @@ const express = require("express");
 // express server
 const app = express();
 //  nodejs
-// const server = require("http").Server(app);
+const server = require("http").Server(app);
+
+// nodejs => socket enabled
+const path = require("path");
+// const io = require("socket.io")(server);
 const io = require("socket.io")(server, {
   cors: {
     origin: "*", // Use your frontend URL in production
     methods: ["GET", "POST"]
   }
 });
-// nodejs => socket enabled
-const path = require("path");
-const io = require("socket.io")(server);
 // serve static assets to client
 app.use(express.static("public"));
 
